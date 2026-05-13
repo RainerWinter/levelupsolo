@@ -30,22 +30,28 @@
     /* NAV */
     nav {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(255,255,255,0.97);
-      border-bottom: 1px solid #e8edf3;
-      padding: 0 5%;
+      background: #f4f6f8;
+      border-bottom: 2px solid #dde3ea;
+      padding: 0 4%;
       display: flex; align-items: center; justify-content: space-between;
-      height: 68px;
-      backdrop-filter: blur(6px);
+      height: 90px;
     }
-    .nav-logo { text-decoration: none; display: flex; align-items: center; }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-logo { text-decoration: none; display: flex; align-items: center; gap: 1rem; }
+    .nav-logo-divider {
+      width: 1px; height: 48px; background: #bcc5cf; margin: 0 0.5rem;
+    }
+    .nav-logo-text {
+      font-size: 0.78rem; font-weight: 700; color: var(--primary);
+      line-height: 1.35; letter-spacing: 0.5px; text-transform: uppercase;
+    }
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
     .nav-links a { text-decoration: none; color: var(--text); font-size: 0.95rem; font-weight: 500; transition: color 0.2s; }
     .nav-links a:hover { color: var(--accent); }
     .nav-cta {
-      background: var(--accent); color: #fff; padding: 0.55rem 1.3rem;
+      background: var(--accent); color: #fff; padding: 0.65rem 1.5rem;
       border-radius: 6px; font-weight: 600; font-size: 0.9rem;
       text-decoration: none; transition: background 0.2s;
-      white-space: nowrap;
+      white-space: nowrap; display: flex; align-items: center; gap: 0.5rem;
     }
     .nav-cta:hover { background: var(--accent-dark); }
     .nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
@@ -259,14 +265,15 @@
 
     /* RESPONSIVE */
     @media (max-width: 768px) {
-      nav { padding: 0 4%; }
+      nav { padding: 0 4%; height: 72px; }
       .nav-links, .nav-cta { display: none; }
+      .nav-logo img { height: 44px; }
       .nav-burger { display: flex; }
       .nav-links.open {
         display: flex; flex-direction: column;
-        position: absolute; top: 68px; left: 0; right: 0;
-        background: #fff; padding: 1.5rem;
-        border-bottom: 1px solid #e8edf3;
+        position: absolute; top: 72px; left: 0; right: 0;
+        background: #f4f6f8; padding: 1.5rem;
+        border-bottom: 1px solid #dde3ea;
         box-shadow: 0 8px 20px rgba(0,0,0,0.08);
       }
       .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
@@ -280,7 +287,9 @@
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="#">
-    <img src="Logo-LevelUpSolo.png" alt="Level-Up Solo" style="height: 48px; width: auto; display: block;" />
+    <img src="Logo-LevelUpSolo.png" alt="Level-Up Solo" style="height: 60px; width: auto; display: block;" />
+    <div class="nav-logo-divider"></div>
+    <div class="nav-logo-text">LEVELUP<br>SOLO</div>
   </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#">Startseite</a></li>
@@ -288,7 +297,7 @@
     <li><a href="#ablauf">Ablauf</a></li>
     <li><a href="#team">Über uns</a></li>
   </ul>
-  <a class="nav-cta" href="https://zfrmz.eu/5fKweRCYgS3jR8aMoraZ" target="_blank" rel="noopener">Jetzt starten</a>
+  <a class="nav-cta" href="https://zfrmz.eu/5fKweRCYgS3jR8aMoraZ" target="_blank" rel="noopener">✉ Jetzt starten</a>
   <div class="nav-burger" onclick="document.getElementById('navLinks').classList.toggle('open')">
     <span></span><span></span><span></span>
   </div>
