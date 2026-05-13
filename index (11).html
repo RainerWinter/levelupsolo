@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Level-Up Solo – Selbstführung für Solo-Selbständige</title>
+  <meta name="description" content="Mit Level-Up Solo gewinnst du Business-Strategien und Selbstführung. Staatlich gefördert bis zu 4.500 €. Persönliches Coaching für Solo-Selbständige." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #1a3a5c;
+      --accent: #e8a020;
+      --accent-dark: #c8880e;
+      --text: #1e1e2e;
+      --text-light: #555;
+      --bg: #ffffff;
+      --bg-light: #f7f9fc;
+      --bg-dark: #0f2340;
+      --radius: 10px;
+      --shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--bg); line-height: 1.65; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.97);
+      border-bottom: 1px solid #e8edf3;
+      padding: 0 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+      backdrop-filter: blur(6px);
+    }
+    .nav-logo { text-decoration: none; display: flex; align-items: center; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--text); font-size: 0.95rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta {
+      background: var(--accent); color: #fff; padding: 0.55rem 1.3rem;
+      border-radius: 6px; font-weight: 600; font-size: 0.9rem;
+      text-decoration: none; transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .nav-cta:hover { background: var(--accent-dark); }
+    .nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .nav-burger span { width: 24px; height: 2px; background: var(--text); display: block; transition: all 0.3s; }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, var(--bg-dark) 0%, var(--primary) 100%);
+      color: #fff;
+      padding: 100px 5% 80px;
+      text-align: center;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(232,160,32,0.2);
+      color: var(--accent);
+      border: 1px solid rgba(232,160,32,0.4);
+      padding: 0.35rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.5px;
+    }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.2; margin-bottom: 1.2rem; max-width: 800px; margin-inline: auto; }
+    .hero h1 span { color: var(--accent); }
+    .hero p { font-size: 1.15rem; color: rgba(255,255,255,0.82); max-width: 620px; margin: 0 auto 2.5rem; }
+    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--accent); color: #fff; padding: 0.85rem 2rem;
+      border-radius: 7px; font-weight: 700; font-size: 1rem;
+      text-decoration: none; transition: all 0.2s; display: inline-block;
+    }
+    .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); }
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,0.5); color: #fff; padding: 0.85rem 2rem;
+      border-radius: 7px; font-weight: 600; font-size: 1rem;
+      text-decoration: none; transition: all 0.2s; display: inline-block;
+    }
+    .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
+
+    /* SECTIONS */
+    section { padding: 80px 5%; }
+    .section-light { background: var(--bg-light); }
+    .section-dark { background: var(--bg-dark); color: #fff; }
+
+    .section-label {
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem;
+    }
+    h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); font-weight: 800; line-height: 1.25; margin-bottom: 1rem; }
+    .section-dark h2 { color: #fff; }
+    .lead { font-size: 1.1rem; color: var(--text-light); max-width: 680px; }
+    .section-dark .lead { color: rgba(255,255,255,0.75); }
+
+    /* THREE COLS */
+    .three-col { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+    .card {
+      background: #fff; border-radius: var(--radius); padding: 2rem;
+      box-shadow: var(--shadow); border: 1px solid #edf2f7;
+      transition: transform 0.2s;
+    }
+    .card:hover { transform: translateY(-4px); }
+    .card-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--primary); }
+    .card p { font-size: 0.95rem; color: var(--text-light); }
+    .section-light .card { background: #fff; }
+    .section-dark .card { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.12); }
+    .section-dark .card h3 { color: #fff; }
+    .section-dark .card p { color: rgba(255,255,255,0.7); }
+
+    /* QUOTE BAND */
+    .quote-band {
+      background: var(--accent);
+      color: #fff;
+      padding: 60px 5%;
+      text-align: center;
+    }
+    .quote-band blockquote {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 700;
+      font-style: italic;
+      max-width: 760px;
+      margin: 0 auto;
+      line-height: 1.4;
+    }
+
+    /* TEAM */
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem; }
+    .team-card {
+      background: #fff; border-radius: var(--radius); padding: 2.5rem 2rem;
+      box-shadow: var(--shadow); text-align: center; border: 1px solid #edf2f7;
+    }
+    .team-avatar {
+      width: 90px; height: 90px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      margin: 0 auto 1.2rem;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; color: #fff; font-weight: 800;
+    }
+    .team-card h3 { font-size: 1.2rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+    .team-card p { font-size: 0.95rem; color: var(--text-light); }
+
+    /* CHECKLIST */
+    .checklist { list-style: none; margin: 2rem 0; }
+    .checklist li {
+      display: flex; align-items: flex-start; gap: 0.75rem;
+      font-size: 1rem; margin-bottom: 0.85rem; color: var(--text);
+    }
+    .checklist li::before {
+      content: "✓"; color: var(--accent); font-weight: 800;
+      font-size: 1.1rem; flex-shrink: 0; margin-top: 0.05rem;
+    }
+    .checklist-result {
+      background: var(--accent);
+      color: #fff;
+      padding: 1.2rem 1.8rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      margin-top: 1.5rem;
+    }
+
+    /* STATS */
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+    .stat-box {
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius); padding: 2rem; text-align: center;
+    }
+    .stat-number { font-size: 2.8rem; font-weight: 800; color: var(--accent); line-height: 1; }
+    .stat-label { font-size: 0.95rem; color: rgba(255,255,255,0.75); margin-top: 0.5rem; font-weight: 500; }
+
+    /* FOERDERUNG REQUIREMENTS */
+    .requirements {
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2);
+      border-radius: var(--radius); padding: 2rem; margin-top: 2.5rem;
+    }
+    .requirements h3 { color: #fff; font-size: 1rem; font-weight: 700; margin-bottom: 1rem; }
+    .req-list { list-style: none; }
+    .req-list li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.85);
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .req-list li:last-child { border-bottom: none; }
+    .req-list li::before { content: "→"; color: var(--accent); font-weight: 700; }
+
+    /* STEPS */
+    .steps { margin-top: 3rem; }
+    .step {
+      display: flex; gap: 1.5rem; align-items: flex-start;
+      padding: 1.5rem 0; border-bottom: 1px solid #e8edf3;
+    }
+    .step:last-child { border-bottom: none; }
+    .step-num {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--accent); color: #fff;
+      font-weight: 800; font-size: 1.1rem;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-content h3 { font-size: 1rem; font-weight: 700; color: var(--primary); margin-bottom: 0.3rem; }
+    .step-content p { font-size: 0.95rem; color: var(--text-light); }
+
+    /* TESTIMONIALS */
+    .testimonials { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+    .testimonial {
+      background: #fff; border-radius: var(--radius); padding: 2rem;
+      box-shadow: var(--shadow); border: 1px solid #edf2f7;
+      position: relative;
+    }
+    .testimonial::before {
+      content: "\201C"; font-size: 5rem; color: var(--accent);
+      position: absolute; top: -10px; left: 20px; line-height: 1;
+      font-family: Georgia, serif; opacity: 0.3;
+    }
+    .testimonial p { font-size: 0.97rem; color: var(--text); font-style: italic; margin-bottom: 1.2rem; position: relative; z-index: 1; }
+    .testimonial-author { font-weight: 700; color: var(--primary); font-size: 0.9rem; font-style: normal; }
+    .testimonial-role { font-size: 0.82rem; color: var(--text-light); margin-top: 0.15rem; }
+
+    /* CONTACT */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-top: 3rem; }
+    .contact-info h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 1.2rem; color: var(--primary); }
+    .contact-detail { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 1rem; }
+    .contact-detail-icon { font-size: 1.2rem; flex-shrink: 0; }
+    .contact-detail a { color: var(--text); text-decoration: none; }
+    .contact-detail a:hover { color: var(--accent); }
+    .contact-cta-box {
+      background: var(--bg-dark); border-radius: var(--radius); padding: 2.5rem;
+      text-align: center; color: #fff;
+    }
+    .contact-cta-box h3 { color: #fff; font-size: 1.2rem; margin-bottom: 1rem; }
+    .contact-cta-box p { color: rgba(255,255,255,0.75); font-size: 0.95rem; margin-bottom: 2rem; }
+
+    /* FOOTER */
+    footer {
+      background: #0a1a2e; color: rgba(255,255,255,0.6);
+      padding: 50px 5% 30px;
+    }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+    .footer-logo { margin-bottom: 0.8rem; }
+    .footer-desc { font-size: 0.9rem; line-height: 1.7; }
+    .footer-col h4 { color: #fff; font-size: 0.9rem; font-weight: 700; margin-bottom: 1rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.5rem; }
+    .footer-col a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--accent); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-bottom p { font-size: 0.85rem; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 0 4%; }
+      .nav-links, .nav-cta { display: none; }
+      .nav-burger { display: flex; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: absolute; top: 68px; left: 0; right: 0;
+        background: #fff; padding: 1.5rem;
+        border-bottom: 1px solid #e8edf3;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      }
+      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .hero { padding: 70px 5% 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <img src="Logo-LevelUpSolo.png" alt="Level-Up Solo" style="height: 48px; width: auto; display: block;" />
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#">Startseite</a></li>
+    <li><a href="#foerderung">Förderung</a></li>
+    <li><a href="#ablauf">Ablauf</a></li>
+    <li><a href="#team">Über uns</a></li>
+  </ul>
+  <a class="nav-cta" href="https://zfrmz.eu/5fKweRCYgS3jR8aMoraZ" target="_blank" rel="noopener">Jetzt starten</a>
+  <div class="nav-burger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tag">Selbstführung für Solo-Selbständige</div>
+  <h1>Starte jetzt durch –<br>mit Coaching, das dich <span>wirklich</span> weiterbringt.</h1>
+  <p>Dein Weg zu Klarheit, Selbstführung und Business-Wachstum. Staatlich gefördert bis zu 4.500 €.</p>
+  <div class="hero-btns">
+    <a class="btn-primary" href="https://zfrmz.eu/5fKweRCYgS3jR8aMoraZ" target="_blank" rel="noopener">Kostenloses Beratungsgespräch buchen</a>
+    <a class="btn-outline" href="https://levelupsolo.de/wp-content/uploads/2025/06/Whitepaper-Level-Up-Solo.pdf" target="_blank" rel="noopener">Whitepaper downloaden</a>
+  </div>
+</section>
+
+<!-- WAS DICH BREMST -->
+<section class="section-light">
+  <div class="section-label">Das Problem</div>
+  <h2>Was dich bremst. Was dich wirklich weiterbringt.</h2>
+  <p class="lead">Strategisch handeln. Persönlich wachsen. Mit Förderung.</p>
+  <div class="three-col">
+    <div class="card">
+      <div class="card-icon">🔍</div>
+      <h3>Blockaden erkennen</h3>
+      <p>Identifiziere die unsichtbaren Bremsen in deinem Business – die du oft nicht einmal siehst.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🧭</div>
+      <h3>Richtung finden</h3>
+      <p>Entwickle dein inneres Navigationssystem und triff Entscheidungen mit Überzeugung.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🎯</div>
+      <h3>Steuerung übernehmen</h3>
+      <p>Führe dein Business bewusst statt nur zu reagieren. Du bist der Kapitän – nicht die Aufgaben.</p>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<div class="quote-band">
+  <blockquote>„Du führst ein Business – aber wer führt eigentlich dich?"</blockquote>
+</div>
+
+<!-- FÜR WEN -->
+<section>
+  <div class="section-label">Für dich?</div>
+  <h2>Ist Level-Up Solo wirklich das Richtige für dich?</h2>
+  <p class="lead">Mach den Kurz-Check:</p>
+  <ul class="checklist" style="margin-top: 2rem;">
+    <li>Ich will nicht mehr nur funktionieren, sondern bewusst steuern.</li>
+    <li>Ich bin bereit, mich selbst wieder ernster zu nehmen.</li>
+    <li>Ich spüre, dass mein Business Klarheit braucht – und ich auch.</li>
+    <li>Ich arbeite gern eigenverantwortlich – aber schätze klare Struktur.</li>
+    <li>Ich finde Förderung spannend – aber will echte Wirkung, nicht nur ein Zertifikat.</li>
+  </ul>
+  <div class="checklist-result">
+    Wenn du mindestens 3× ja gesagt hast: Dann ist Level-Up Solo wahrscheinlich genau dein nächster Schritt.
+  </div>
+</section>
+
+<!-- WAS DU ERREICHST -->
+<section class="section-light">
+  <div class="section-label">Dein Gewinn</div>
+  <h2>Was du mit Level-Up Solo erreichst</h2>
+  <div class="three-col">
+    <div class="card">
+      <div class="card-icon">⏱️</div>
+      <h3>Zeit & Prioritäten neu denken</h3>
+      <p>Nie wieder To-do-Chaos. Du findest deinen Fokus zurück und setzt deine Energie gezielt ein.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">💪</div>
+      <h3>Selbstführung & Resilienz stärken</h3>
+      <p>Du lernst, wie du mit dir selbst gut umgehst – auch in Phasen, in denen alles zu viel scheint.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🧠</div>
+      <h3>Entscheidungen treffen</h3>
+      <p>Raus aus der Gedankenschleife – handlungsfähig werden mit Klarheit und Haltung.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🗣️</div>
+      <h3>Kommunizieren mit Wirkung</h3>
+      <p>Klar sprechen. Typgerecht zuhören. Kundenbeziehungen souverän gestalten.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="section-label">Das Team</div>
+  <h2>Zwei Köpfe. Ein Ziel. Selbständige stärken.</h2>
+  <p class="lead">Gemeinsam bringen wir über 40 Jahre Erfahrung in Leadership, Coaching und Persönlichkeitsentwicklung ein.</p>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-avatar">RW</div>
+      <h3>Rainer Winter</h3>
+      <p>Visionär, Storyteller und Strukturgeber – mit einem klaren Blick für Fokus, Wirksamkeit und den nächsten mutigen Schritt.</p>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">MS</div>
+      <h3>Michael Spaeth</h3>
+      <p>Psychologischer Tiefseetaucher und strategischer Denker – mit Feingefühl für Selbstführung, Resilienz und unternehmerische Klarheit.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABLAUF -->
+<section class="section-light" id="ablauf">
+  <div class="section-label">Das Programm</div>
+  <h2>So läuft dein Training konkret ab</h2>
+  <p class="lead">LevelUp Solo ist ein 12-wöchiges Online-Programm – gefördert, klar geführt, persönlich begleitet.</p>
+  <div class="three-col" style="margin-top: 2.5rem;">
+    <div class="card">
+      <div class="card-icon">🎥</div>
+      <h3>Wöchentliche Video-Impulse</h3>
+      <p>Kurze, fokussierte Module zu Themen wie Selbstführung, Strategie und Kommunikation – on demand, wann es für dich passt.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📓</div>
+      <h3>Interaktive Workbooks</h3>
+      <p>Fragen, Tools und Übungen, die dich zum Nachdenken bringen – und zur Umsetzung antreiben.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">💻</div>
+      <h3>Live-Gruppen-Calls via Zoom</h3>
+      <p>1x pro Woche. Du kannst Fragen stellen, Feedback bekommen oder einfach zuhören.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🤝</div>
+      <h3>Optionaler Austausch</h3>
+      <p>Vernetze dich mit anderen Teilnehmenden – für Sparring, Motivation und ehrlichen Austausch.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🧑‍💼</div>
+      <h3>Persönliche Begleitung</h3>
+      <p>Du wirst nicht allein gelassen. Klarheit entsteht im Prozess – durch gezielte Impulse und Reflexionsräume.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🕐</div>
+      <h3>Zeitaufwand</h3>
+      <p>Ca. 2–3 Stunden pro Woche. Flexibel, aber fokussiert. Wirkungsvoll, nicht überwältigend.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOERDERUNG -->
+<section class="section-dark" id="foerderung">
+  <div class="section-label">KOMPASS-Programm</div>
+  <h2>Dein Vorteil: Förderung von bis zu 4.500 €.</h2>
+  <p class="lead">Das KOMPASS-Programm macht es möglich. Hochwertige Begleitung zu einem Bruchteil der Kosten – unbürokratisch, schnell, mit unserer vollständigen Unterstützung.</p>
+  <div class="stats">
+    <div class="stat-box">
+      <div class="stat-number">90%</div>
+      <div class="stat-label">Förderung durch das staatliche KOMPASS-Programm</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-number">500 €</div>
+      <div class="stat-label">Dein Eigenanteil statt 5.000 €</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-number">100%</div>
+      <div class="stat-label">Unterstützung beim Antragsprozess durch uns</div>
+    </div>
+  </div>
+  <div class="requirements">
+    <h3>Was musst du mitbringen?</h3>
+    <ul class="req-list">
+      <li>Du bist solo-selbstständig</li>
+      <li>Du arbeitest und wohnst in Deutschland</li>
+      <li>Deine Selbstständigkeit besteht seit mindestens 2 Jahren</li>
+      <li>Du beschäftigst maximal einen Mitarbeitenden in Vollzeit</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SCHRITTE -->
+<section>
+  <div class="section-label">Der Weg</div>
+  <h2>Der Ablauf – einfach & klar</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>Unverbindliches Beratungsgespräch vereinbaren</h3>
+        <p>Wir lernen dich und deine Situation kennen und klären alle Fragen – ohne Druck, ohne Verkaufsgespräch.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>Förderantrag stellen – mit unserer Unterstützung</h3>
+        <p>Wir begleiten dich durch den gesamten Antragsprozess. Du musst das nicht alleine durchsteigen.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>Zusage erhalten – oft in wenigen Tagen</h3>
+        <p>Die Bewilligung erfolgt in der Regel schnell und unkompliziert.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h3>Mit dem Programm starten – flexibel, online, praxisnah</h3>
+        <p>Du beginnst deine Reise zu mehr Klarheit und Selbstführung.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <h3>Nachweis einreichen – bis zu 4.500 € Rückerstattung sichern</h3>
+        <p>Nach Abschluss erhältst du deine Förderung zurück. Der Staat zahlt – du entwickelst dich.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section-light">
+  <div class="section-label">Kundenstimmen</div>
+  <h2>Erfahrungen teilen</h2>
+  <div class="testimonials">
+    <div class="testimonial">
+      <p>„Wir, die wir bei ihm lernen und gelernt haben, stehen immer im Mittelpunkt. Ein Lösungsansatz für eine konkrete Frage lässt nicht lang auf sich warten. Kurz: Rainer ist weit mehr als ein Dozent, er ist eine Wucht!!"</p>
+      <div class="testimonial-author">Goetz Cammans</div>
+      <div class="testimonial-role">Agiler Leader · Certified Business Coach</div>
+    </div>
+    <div class="testimonial">
+      <p>„Ich bin dankbar für die wertvollen Erkenntnisse, die ich durch Rainers Coaching gewonnen habe."</p>
+      <div class="testimonial-author">Derya Akkaya</div>
+      <div class="testimonial-role">Interim Management</div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section id="kontakt">
+  <div class="section-label">Persönlich ansprechbar</div>
+  <h2>Kontakt</h2>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h3>Wir sind für dich da.</h3>
+      <p style="color: var(--text-light); margin-bottom: 1.5rem;">Hast du Fragen zum Programm oder zur Förderung? Du möchtest wissen, ob LevelUp Solo zu dir passt? Meld dich einfach.</p>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📍</div>
+        <div>Regensburger Straße 79<br>94315 Straubing</div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">✉️</div>
+        <div><a href="mailto:office@levelupsolo.de">office@levelupsolo.de</a></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📞</div>
+        <div><a href="tel:+4994219617993">09421 / 961 799 3</a></div>
+      </div>
+    </div>
+    <div class="contact-cta-box">
+      <h3>Dein nächster Schritt zu echter Selbstführung</h3>
+      <p>Raus aus dem Reaktionsmodus. Rein in echte Selbstführung. Du musst dein Business nicht neu erfinden – aber du darfst neu entscheiden, wie du es führen willst.</p>
+      <a class="btn-primary" href="https://zfrmz.eu/5fKweRCYgS3jR8aMoraZ" target="_blank" rel="noopener">Termin vereinbaren</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo"><img src="Logo-LevelUpSolo.png" alt="Level-Up Solo" style="height: 44px; width: auto;" /></div>
+      <p class="footer-desc">Ein Programm der WINTERFEST Leadership Academy.<br>Rainer & Michael für alle, die ihr Business bewusst führen wollen.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Leistungen</h4>
+      <ul>
+        <li><a href="#">Startseite</a></li>
+        <li><a href="#team">Über uns</a></li>
+        <li><a href="#foerderung">Förderung</a></li>
+        <li><a href="#ablauf">Ablauf</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Infos</h4>
+      <ul>
+        <li><a href="https://www.winterfest.academy/impressum/" target="_blank" rel="noopener">Impressum</a></li>
+        <li><a href="https://www.winterfest.academy/datenschutz/" target="_blank" rel="noopener">Datenschutz</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Level-Up Solo · WINTERFEST Leadership Academy</p>
+    <p>
+      <a href="https://www.winterfest.academy/impressum/" target="_blank" rel="noopener" style="color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.85rem;">Impressum</a>
+      &nbsp;·&nbsp;
+      <a href="https://www.winterfest.academy/datenschutz/" target="_blank" rel="noopener" style="color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.85rem;">Datenschutz</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
